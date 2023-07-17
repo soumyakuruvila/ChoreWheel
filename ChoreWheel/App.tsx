@@ -15,6 +15,8 @@ import {
   Text,
   useColorScheme,
   View,
+  TextInput,
+  TouchableOpacity,
 } from 'react-native';
 
 import {
@@ -71,29 +73,54 @@ function App(): JSX.Element {
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
         style={backgroundStyle}>
-        <Header />
         <View
           style={{
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
           }}>
-          <Section title="Log In">
+          <Section title="ChoreWheel">
           </Section>
-          <Section title="Sign Up">
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
+        
+          <View style={styles.inputView}>
+            <TextInput
+              style={styles.inputText}
+              placeholder="Email"
+            />
+            </View>
+            <View style={styles.inputView}>
+            <TextInput
+              style={styles.inputText}
+              secureTextEntry
+              placeholder="Password"
+            />
+          </View>
+          <TouchableOpacity
+            onPress = {onPressLogin}>
+          <Text style={styles.loginText}>Forgot Password?</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress = {onPressLogin}
+            style={styles.loginBtn}>
+          <Text style={styles.loginTextMain}>Log In</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress = {onPressLogin}>
+          <Text style={styles.loginText}>Sign Up</Text>
+          </TouchableOpacity>
         </View>
       </ScrollView>
     </SafeAreaView>
   );
 }
 
+const onPressLogin = () => {
+// Do something about login operation
+};
+
 const styles = StyleSheet.create({
   sectionContainer: {
     marginTop: 32,
     paddingHorizontal: 24,
+    alignItems: 'center',
   },
   container: {
     alignItems: 'center',
@@ -101,8 +128,10 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   sectionTitle: {
-    fontSize: 24,
+    marginTop: 80,
+    fontSize: 50,
     fontWeight: '600',
+    marginBottom: 40,
   },
   sectionDescription: {
     marginTop: 8,
@@ -111,6 +140,40 @@ const styles = StyleSheet.create({
   },
   highlight: {
     fontWeight: '700',
+  },
+  inputView:{
+    width:"70%",
+    alignSelf: "center",
+    borderRadius:25,
+    borderWidth: 1,
+    height:50,
+    marginBottom:20,
+    justifyContent:"center",
+    padding:20,
+  },
+  inputText:{
+    height:50,
+  },
+  loginText:{
+    color:"black",
+    fontSize:11,
+    alignSelf: "center",
+  },
+  loginTextMain:{
+    color:"black",
+    fontSize:16,
+    alignSelf: "center",
+  },
+  loginBtn:{
+    width:"70%",
+    backgroundColor:"#50967f",
+    borderRadius:25,
+    height:50,
+    alignItems:"center",
+    justifyContent:"center",
+    marginTop:30,
+    marginBottom:10,
+    alignSelf: "center",
   },
 });
 
